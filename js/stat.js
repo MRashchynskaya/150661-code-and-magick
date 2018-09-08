@@ -53,9 +53,9 @@ var getColor = function (player) {
   return color;
 };
 
-var renderBar = function (ctx, players, times, maxTime, i) {
-  ctx.fillStyle = getColor(players);
-  ctx.fillRect(CLOUD_X + BIG_GAP + (BAR_GAP + BAR_WIDTH) * i, CLOUD_Y + 100 + barHeight - ((barHeight * times[i]) / maxTime) - (16 + SMALL_GAP  ), BAR_WIDTH, (barHeight * times[i]) / maxTime);
+var renderBar = function (ctx, player, times, maxTime, playerIndex) {
+  ctx.fillStyle = getColor(player);
+  ctx.fillRect(CLOUD_X + BIG_GAP + (BAR_GAP + BAR_WIDTH) * playerIndex, CLOUD_Y + 100 + barHeight - ((barHeight * times[playerIndex]) / maxTime) - (16 + SMALL_GAP), BAR_WIDTH, (barHeight * times[playerIndex]) / maxTime);
 };
 
 window.renderStatistics = function (ctx, players, times) {
