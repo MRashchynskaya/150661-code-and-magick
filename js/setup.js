@@ -15,10 +15,6 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template')
   .querySelector('.setup-similar-item');
 var players = [];
 
-// Показываем блоки .setup и .setup-similar, убирая класс .hidden
-userDialog.classList.remove('hidden');
-userDialog.querySelector('.setup-similar').classList.remove('hidden');
-
 // функции
 // Объявляем функцию генерации случайных данных (одну для всех случаев)
 var getRandomArrayElement = function (arr) {
@@ -43,8 +39,6 @@ var createPlayers = function () {
   return players;
 };
 
-createPlayers();
-
 var renderWizard = function (wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
   wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
@@ -53,9 +47,15 @@ var renderWizard = function (wizard) {
   return wizardElement;
 };
 
+createPlayers();
+
 var fragment = document.createDocumentFragment();
 for (var i = 0; i < players.length; i++) {
   fragment.appendChild(renderWizard(players[i]));
 }
 
 similarListElement.appendChild(fragment);
+
+// Показываем блоки .setup и .setup-similar, убирая класс .hidden
+userDialog.classList.remove('hidden');
+userDialog.querySelector('.setup-similar').classList.remove('hidden');
