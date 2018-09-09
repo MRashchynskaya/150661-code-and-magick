@@ -5,42 +5,33 @@ var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
 
 // массивы имен и фамилий
-var names = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
-var surnames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
+var NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
+var SURNAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 
 // массивы цветов для мантии и для глаз персонажа
-var colorsCoat = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
-var colorsEyes = ['black', 'red', 'blue', 'yellow', 'green'];
+var COLORS_COAT = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+var COLORS_EYES = ['black', 'red', 'blue', 'yellow', 'green'];
 
 // Объявляем функцию генерации случайных данных (одну для всех случаев)
-var randomize = function (arr) {
+var getRandomArrayElement = function (arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 };
 
-// Создаем массив из 4 объектов со случайными параметрами
-
-var players = [
-  {
-    name: randomize(names) + ' ' + randomize(surnames),
-    coatColor: randomize(colorsCoat),
-    eyesColor: randomize(colorsEyes)
-  },
-  {
-    name: randomize(names) + ' ' + randomize(surnames),
-    coatColor: randomize(colorsCoat),
-    eyesColor: randomize(colorsEyes)
-  },
-  {
-    name: randomize(names) + ' ' + randomize(surnames),
-    coatColor: randomize(colorsCoat),
-    eyesColor: randomize(colorsEyes)
-  },
-  {
-    name: randomize(names) + ' ' + randomize(surnames),
-    coatColor: randomize(colorsCoat),
-    eyesColor: randomize(colorsEyes)
+// Создаем массив игроков из 4 объектов со случайными параметрами
+var TOTAL_PLAYERS = 4;
+var players = [];
+var createPlayers = function (names, surnames, colorsCoat, colorsEyes, totalPlayers) {
+  for (var i = 0; i < totalPlayers; i++) {
+    players.push(
+        {
+          name: getRandomArrayElement(names) + ' ' + getRandomArrayElement(surnames),
+          coatColor: getRandomArrayElement(colorsCoat),
+          eyesColor: getRandomArrayElement(colorsEyes)
+        }
+    );
   }
-];
+  return players;
+};
 
 var similarListElement = userDialog.querySelector('.setup-similar-list');
 
