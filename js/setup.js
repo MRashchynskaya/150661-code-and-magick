@@ -26,14 +26,14 @@ var getRandomArrayElement = function (arr) {
 };
 
 // функция, возвращающая объект "игрок" с данными
-var createObjectPlayer = function() {
+var createObjectPlayer = function () {
   var objectPlayer = {
     name: getRandomArrayElement(NAMES) + ' ' + getRandomArrayElement(SURNAMES),
     coatColor: getRandomArrayElement(COLORS_COAT),
     eyesColor: getRandomArrayElement(COLORS_EYES)
-  }
+  };
   return objectPlayer;
-}
+};
 
 // Создаем массив игроков со случайными параметрами и добавляем элементы на страницу
 var createPlayers = function () {
