@@ -47,6 +47,8 @@ var renderWizard = function (wizard) {
   return wizardElement;
 };
 
+createPlayers(NAMES, SURNAMES, COLORS_COAT, COLORS_EYES, TOTAL_PLAYERS);
+
 var fragment = document.createDocumentFragment();
 for (var i = 0; i < players.length; i++) {
   fragment.appendChild(renderWizard(players[i]));
