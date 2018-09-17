@@ -58,13 +58,6 @@ var renderWizard = function (wizard) {
   return wizardElement;
 };
 
-// Создаем похожих игроков
-createPlayers();
-for (var i = 0; i < players.length; i++) {
-  fragment.appendChild(renderWizard(players[i]));
-}
-similarListElement.appendChild(fragment);
-
 // функции для открытия и закрытия окна настроек игрока
 var onPopupEscPress = function (evt) {
   if (evt.keyCode === ESC_KEYCODE) {
@@ -120,3 +113,10 @@ wizardFireball.addEventListener('click', setWizardFireballColor);
 // Показываем блоки .setup и .setup-similar, убирая класс .hidden
 // userDialog.classList.remove('hidden');
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
+
+// Создаем похожих игроков
+createPlayers();
+for (var i = 0; i < players.length; i++) {
+  fragment.appendChild(renderWizard(players[i]));
+}
+similarListElement.appendChild(fragment);
