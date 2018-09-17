@@ -35,12 +35,11 @@ var getRandomArrayElement = function (arr) {
 
 // функция, возвращающая объект "игрок" с данными
 var createObjectPlayer = function () {
-  var objectPlayer = {
+  return {
     name: getRandomArrayElement(NAMES) + ' ' + getRandomArrayElement(SURNAMES),
     coatColor: getRandomArrayElement(COLORS_COAT),
     eyesColor: getRandomArrayElement(COLORS_EYES)
   };
-  return objectPlayer;
 };
 
 // Создаем массив игроков со случайными параметрами и добавляем элементы на страницу
@@ -59,18 +58,14 @@ var renderWizard = function (wizard) {
   return wizardElement;
 };
 
+// Создаем похожих игроков
 createPlayers();
-
 for (var i = 0; i < players.length; i++) {
   fragment.appendChild(renderWizard(players[i]));
 }
-
 similarListElement.appendChild(fragment);
 
-// Показываем блоки .setup и .setup-similar, убирая класс .hidden
-// userDialog.classList.remove('hidden');
-userDialog.querySelector('.setup-similar').classList.remove('hidden');
-
+// функции для открытия и закрытия окна настроек игрока
 var onPopupEscPress = function (evt) {
   if (evt.keyCode === ESC_KEYCODE) {
     closeSetupWindow();
@@ -90,19 +85,20 @@ var closeSetupWindow = function () {
 var setWizardCoatColor = function () {
   var colorCoat = getRandomArrayElement(COLORS_COAT);
   wizardCoat.style.fill = colorCoat;
-  inputCoatColor.setAttribute('value', colorCoat);
+  inputCoatColor.value = colorCoat;
 };
 var setWizardEyesColor = function () {
   var colorEyes = getRandomArrayElement(COLORS_EYES);
   wizardEyes.style.fill = colorEyes;
-  inputEyesColor.setAttribute('value', colorEyes);
+  inputEyesColor.value = colorEyes;
 };
 var setWizardFireballColor = function () {
   var colorFireball = getRandomArrayElement(COLORS_FIREBALL);
   wizardFireball.style.backgroundColor = colorFireball;
-  inputFireballColor.setAttribute('value', colorFireball);
+  inputFireballColor.value = colorFireball;
 };
 
+// "навешиваем" события
 setupOpen.addEventListener('click', openSetupWindow);
 setupClose.addEventListener('click', closeSetupWindow);
 setupOpen.addEventListener('keydown', function (evt) {
@@ -120,3 +116,7 @@ setupClose.addEventListener('keydown', function (evt) {
 wizardCoat.addEventListener('click', setWizardCoatColor);
 wizardEyes.addEventListener('click', setWizardEyesColor);
 wizardFireball.addEventListener('click', setWizardFireballColor);
+
+// Показываем блоки .setup и .setup-similar, убирая класс .hidden
+// userDialog.classList.remove('hidden');
+userDialog.querySelector('.setup-similar').classList.remove('hidden');
